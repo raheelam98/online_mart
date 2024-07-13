@@ -1,0 +1,114 @@
+version: "3.9"
+
+name: online_mart
+
+#===============================================================================================
+
+services:
+
+  users:
+    build:
+      context: ./user_service
+      dockerfile: Dockerfile
+    container_name: user_container
+    ports:
+      - "8081:8000"  # Expose host port 8009 to container port 8000 
+    depends_on:
+        - postgres_db   
+    volumes:
+      - ./user_service:/code   
+
+  #===============================================================================================
+  
+  product:
+    build:
+      context: ./product_service
+      dockerfile: Dockerfile
+    container_name: product_container
+    ports:
+      - "8082:8000"  # Expose host port 8008 to container port 8000 
+    depends_on:
+        - postgres_db   
+    volumes:
+      - ./product_service:/code 
+
+  
+  #===============================================================================================
+  
+  order:
+    build:
+      context: ./order_service
+      dockerfile: Dockerfile
+    container_name: order_container
+    ports:
+      - "8083:8000"  # Expose host port 8006 to container port 8000 
+    depends_on:
+        - postgres_db   
+    volumes:
+      - ./order_service:/code 
+        
+
+  #===============================================================================================
+  
+  inventory:
+    build:
+      context: ./inventory_service
+      dockerfile: Dockerfile
+    container_name: inventory_container
+    ports:
+      - "8084:8000"  # Expose host port 8007 to container port 8000 
+    depends_on:
+        - postgres_db   
+    volumes:
+      - ./inventory_service:/code 
+
+
+  #===============================================================================================
+  
+  # ## pg Admin
+
+  postgres_db:
+    image: postgres:latest  # Use the official PostgreSQL image
+    restart: always
+    container_name: PostgresCont
+    environment:
+        - POSTGRES_USER=ziakhan
+        - POSTGRES_PASSWORD=my_password
+        - POSTGRES_DB=mydatabase
+    ports:
+        - '5432:5432'
+    volumes:
+        - postgres_db:/var/lib/postgresql/data
+ 
+
+  #===============================================================================================
+
+  # ## neon
+
+  # postgres_db:
+  #   image: postgres:latest  # Use the official PostgreSQL image
+  #   restart: always
+  #   container_name: PostgresCont
+  #   environment:
+  #       - POSTGRES_USER=your_neondb_owner 
+  #       - POSTGRES_PASSWORD=your_neon_password
+  #       - POSTGRES_DB=your_neon_database
+  #   ports:
+  #       - '5432:5432'
+  #   volumes:
+  #       - postgres_db:/var/lib/postgresql/data
+ 
+
+#===============================================================================================
+
+volumes:
+  postgres_db:
+    driver: local
+
+#===============================================================================================
+
+networks:
+  default:
+    driver: bridge
+
+#===============================================================================================

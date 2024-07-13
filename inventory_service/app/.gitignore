@@ -1,0 +1,27 @@
+### Python ###
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+.env
+.venv
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+dist/
+downloads/
+lib/
+lib64/
+parts/
+var/
+
+# Unit test / coverage report
+.cache
+.pytest_cache/
+cover/
