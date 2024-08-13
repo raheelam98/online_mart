@@ -2,6 +2,11 @@ Hidden files
 
 Press Command + Shift + . (period) to make the hidden files appear. (mac)
 
+**to run app**
+
+```shell
+poetry run uvicorn app.main:app --reload
+```
 
 **poetry commands**
 
