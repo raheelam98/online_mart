@@ -5,12 +5,13 @@ Press Command + Shift + . (period) to make the hidden files appear. (mac)
 
 **poetry commands**
 
-add drivers
+add drivers :- mac
 ```shell
-mac
 poetry add fastapi uvicorn\[standard\] sqlmodel psycopg 
+```
 
-window
+add drivers :-
+```shell
 poetry add fastapi uvicorn[standard] sqlmodel psycopg psycopg2
 ```
 
