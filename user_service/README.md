@@ -17,7 +17,7 @@ poetry add fastapi uvicorn\[standard\] sqlmodel psycopg
 
 add drivers :- window
 ```shell
-poetry add fastapi uvicorn["standard"] sqlmodel psycopg
+poetry add fastapi uvicorn["standard"] sqlmodel psycopg psycopg2
 
 ```
 
