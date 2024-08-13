@@ -10,9 +10,9 @@ add drivers :- mac
 poetry add fastapi uvicorn\[standard\] sqlmodel psycopg 
 ```
 
-add drivers :-
+add drivers :- window
 ```shell
-poetry add fastapi uvicorn[standard] sqlmodel psycopg psycopg2
+poetry add fastapi uvicorn[standard] sqlmodel psycopg
 ```
 
 python-jose python library to generate access_tokens
